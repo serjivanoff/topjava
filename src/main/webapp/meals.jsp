@@ -14,8 +14,16 @@
             color: red;
         }
     </style>
+
 </head>
 <body>
+<form  method="get"action="filter">
+    <p><b>Here you can filter entries by date and(or) time</b></p>
+    startDate:     <input type="text"name="startDate"> endDate:   <input type="text" name="endDate"><br>
+    <br>
+    startTime:     <input type="text"name="startTime"> endTime:   <input type="text"name="endTime"><br>
+    <button type="submit" >Filter </button>
+</form>
 <section>
     <h2><a href="index.html">Home</a></h2>
     <h2>Meal list</h2>
@@ -32,7 +40,7 @@
         </tr>
         </thead>
         <c:forEach items="${meals}" var="meal">
-            <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
+            <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.to.MealWithExceed"/>
             <tr class="${meal.exceed ? 'exceeded' : 'normal'}">
                 <td>
                         <%--${meal.dateTime.toLocalDate()} ${meal.dateTime.toLocalTime()}--%>

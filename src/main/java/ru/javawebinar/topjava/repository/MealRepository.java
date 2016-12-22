@@ -2,7 +2,9 @@ package ru.javawebinar.topjava.repository;
 
 import ru.javawebinar.topjava.model.Meal;
 
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * GKislin
@@ -11,9 +13,9 @@ import java.util.Collection;
 public interface MealRepository {
     Meal save(Meal Meal);
 
-    void delete(int id);
+    boolean delete(int id,Integer userId);
 
     Meal get(int id);
 
-    Collection<Meal> getAll();
+    List<Meal> getAll(Integer userId, LocalDate startDate, LocalDate endDate);
 }

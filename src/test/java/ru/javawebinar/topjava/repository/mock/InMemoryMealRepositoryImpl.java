@@ -27,7 +27,7 @@ import static ru.javawebinar.topjava.UserTestData.USER_ID;
 @Repository
 public class InMemoryMealRepositoryImpl implements MealRepository {
 
-    private static final Comparator<Meal> MEAL_COMPARATOR = Comparator.comparing(Meal::getDateTime).reversed();
+    public static final Comparator<Meal> MEAL_COMPARATOR = Comparator.comparing(Meal::getDateTime).reversed();
 
     // Map  userId -> (mealId-> meal)
     private Map<Integer, Map<Integer, Meal>> repository = new ConcurrentHashMap<>();
@@ -36,8 +36,8 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
     {
         MealsUtil.MEALS.forEach(um -> save(um, USER_ID));
 
-        save(new Meal(LocalDateTime.of(2015, Month.JUNE, 1, 14, 0), "Админ ланч", 510), ADMIN_ID);
-        save(new Meal(LocalDateTime.of(2015, Month.JUNE, 1, 21, 0), "Админ ужин", 1500), ADMIN_ID);
+        save(new Meal(null,LocalDateTime.of(2015, Month.JUNE, 1, 14, 0), "Админ ланч", 510), ADMIN_ID);
+        save(new Meal(null,LocalDateTime.of(2015, Month.JUNE, 1, 21, 0), "Админ ужин", 1500), ADMIN_ID);
     }
 
     @Override
@@ -86,4 +86,3 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
                 Stream.empty() : meals.values().stream().sorted(MEAL_COMPARATOR);
     }
 }
-

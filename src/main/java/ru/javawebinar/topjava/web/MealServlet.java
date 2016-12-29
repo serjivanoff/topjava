@@ -26,23 +26,19 @@ import java.util.Objects;
  */
 public class MealServlet extends HttpServlet {
     private static final Logger LOG = LoggerFactory.getLogger(MealServlet.class);
-
     private ConfigurableApplicationContext springContext;
     private MealRestController mealController;
-
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         springContext = new ClassPathXmlApplicationContext("spring/spring-app.xml", "spring/spring-db.xml");
         mealController = springContext.getBean(MealRestController.class);
     }
-
     @Override
     public void destroy() {
         springContext.close();
         super.destroy();
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -71,7 +67,6 @@ public class MealServlet extends HttpServlet {
             request.getRequestDispatcher("/meals.jsp").forward(request, response);
         }
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -91,11 +86,11 @@ public class MealServlet extends HttpServlet {
             final Meal meal = action.equals("create") ?
                     new Meal(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "", 1000) :
                     mealController.get(getId(request));
+            System.out.println(meal.toString());
             request.setAttribute("meal", meal);
             request.getRequestDispatcher("meal.jsp").forward(request, response);
         }
     }
-
     private int getId(HttpServletRequest request) {
         String paramId = Objects.requireNonNull(request.getParameter("id"));
         return Integer.valueOf(paramId);

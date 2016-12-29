@@ -1,5 +1,7 @@
 package ru.javawebinar.topjava.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * User: gkislin
  * Date: 22.08.2014

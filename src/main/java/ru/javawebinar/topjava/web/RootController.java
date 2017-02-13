@@ -6,11 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.javawebinar.topjava.AuthorizedUser;
+import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.service.MealService;
 import ru.javawebinar.topjava.service.UserService;
 import ru.javawebinar.topjava.util.MealsUtil;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 
 /**
  * User: gkislin
@@ -48,4 +50,11 @@ public class RootController {
                 MealsUtil.getWithExceeded(mealService.getAll(AuthorizedUser.id()), AuthorizedUser.getCaloriesPerDay()));
         return "meals";
     }
+//    @PostMapping("/meals")
+//    public String addMeal(HttpServletRequest request) {
+//       // int userId=AuthorizedUser.id();
+////
+////        Meal meal=new Meal(LocalDateTime.now(),request.getParameter("description"));
+//        return "forward:meals";
+//    }
 }

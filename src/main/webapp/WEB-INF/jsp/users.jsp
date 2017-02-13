@@ -95,7 +95,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-offset-3 col-xs-9">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-block">
                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                             </button>
                         </div>

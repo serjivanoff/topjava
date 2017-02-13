@@ -52,7 +52,6 @@ function save() {
         }
     });
 }
-
 var failedNote;
 
 function closeNoty() {

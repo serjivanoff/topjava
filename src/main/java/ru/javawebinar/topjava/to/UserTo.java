@@ -68,15 +68,12 @@ public class UserTo implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
     public boolean isNew() {
         return id == null;
     }
-
     public Integer getCaloriesPerDay() {
         return caloriesPerDay;
     }
-
     @Override
     public String toString() {
         return "UserTo{" +
